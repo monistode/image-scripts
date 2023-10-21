@@ -2,6 +2,7 @@
 
 This repository contains the scripts for facilitating (**Note: Not generating**) the linux image for the de10-nano board generation
 
+Should you just need the image, ask one of the guys that worked on this project - though they will probably not respond to you :=(
 
 ## Description
 
