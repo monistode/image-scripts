@@ -1,0 +1,9 @@
+label: dos
+label-id: 0x54e583e8
+device: /dev/loop0
+unit: sectors
+sector-size: 512
+
+start=        4096, size=      520192, type=b
+start=      524288, size=     3670016, type=83
+start=        2048, size=        2048, type=a2
