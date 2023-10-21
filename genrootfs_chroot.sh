@@ -27,7 +27,7 @@ apt install openssh-server -y
 apt install wireless-tools -y
 apt install wpasupplicant -y
 apt install haveged -y
-apt install net-tools build-essential device-tree-compiler firmware-ralink -y
+apt install net-tools build-essential device-tree-compiler -y
 
 systemctl reenable wpa_supplicant.service
 

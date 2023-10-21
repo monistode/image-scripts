@@ -7,8 +7,8 @@ SHOULD BE USED WITH ROOT!
 Flags:
     -h - help
     -o file - the path to the output file (DEFAULT = 'sdcard.img')
-    -k file - the path to the kernel (DEFAULT = 'linux-socfpga/arch/arm/boot/zImage')
-    -d file - the path to the dtb file for the SOC (DEFAULT = 'linux-socfpga/arch/arm/boot/dts/socfpga_cyclone5_de0_nano_soc.dtb')
+    -k file - the path to the kernel (DEFAULT = 'config_files/zImage')
+    -d file - the path to the dtb file for the SOC (DEFAULT = 'config_files/socfpga_cyclone5_de0_nano_soc.dtb')
     -b file - the path to bootloader (DEFAULT = 'u-boot/u-boot-with-spl.sfp')
     -r file - the path to the rootfs tarball (DEFAULT = 'rootfs.tar.bz2')"
 }
@@ -18,8 +18,8 @@ OPTIND=1         # Reset in case getopts has been used previously in the shell.
 
 # Initialize our own variables:
 output_file="sdcard.img"
-kernel_file="linux-socfpga/arch/arm/boot/zImage"
-dtb_file="linux-socfpga/arch/arm/boot/dts/socfpga_cyclone5_de0_nano_soc.dtb"
+kernel_file="config_files/zImage"
+dtb_file="config_files/socfpga_cyclone5_de0_nano_soc.dtb"
 boot_file="u-boot/u-boot-with-spl.sfp"
 rootfs_file="rootfs.tar.bz2"
 
@@ -84,7 +84,7 @@ make_image() {
     echo "LABEL Linux Default" > extlinux.conf
     echo "    KERNEL ../zImage" >> extlinux.conf
     echo "    FDT ../socfpga_cyclone5_de0_nano_soc.dtb" >> extlinux.conf
-    echo "    APPEND root=/dev/mmcblk0p2 rw rootwait earlyprintk console=ttyS0,115200n8 net.ifnames=0" >> extlinux.conf
+    echo "    APPEND root=/dev/mmcblk0p2 rw rootwait earlyprintk console=ttyS0,115200n8" >> extlinux.conf
 
     mkdir -p fat/extlinux
     cp extlinux.conf fat/extlinux
