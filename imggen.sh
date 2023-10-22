@@ -54,16 +54,13 @@ make_image() {
     ROOTFS_FILE=$(realpath $5)
 
     # Create the image file
-    fallocate -l 2G $FNAME
+    fallocate -l 1G $FNAME
 
     # Create a loopback device to partition
     DEVICE=$(losetup --show -f $FNAME)
-    SED_DEVICE=$(echo $DEVICE | sed 's/\//\\\//g')
-
-    cat ./config_files/sdcard.sfdisk | sed "s/\/dev\/loop0/${SED_DEVICE}/g" > sdcard.conf
 
     # Partition the image
-    sfdisk $DEVICE < sdcard.conf
+    sfdisk $DEVICE < ./config_files/sdcard.sfdisk
     rm sdcard.conf
 
     # Make sure the partitions are visible
@@ -72,6 +69,7 @@ make_image() {
     mkfs.ext4 "${DEVICE}p2"
 
     # Setup the bootloader
+    dd if=/dev/zero of="${DEVICE}p3" bs=64k
     dd if=$BOOTLOADER_FILE of="${DEVICE}p3" bs=64k seek=0 oflag=sync
 
     # Setup the boot partition
