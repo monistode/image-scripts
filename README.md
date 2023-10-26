@@ -17,12 +17,12 @@ Here's a rundown of what the scripts do:
 # Compiling u-boot
 Make sure you install these packages:
 ```bash
-sudo apt install gcc-arm-none-eabi
+sudo apt install gcc-arm-linux-gnueabihf
 ```
 
 Now export the cross-compiler path
 ```bash
-export CROSS_COMPILE=/usr/bin/arm-none-eabi-
+export CROSS_COMPILE=/usr/bin/arm-linux-gnueabihf-
 ```
 
 And run the script
@@ -40,7 +40,7 @@ bc debootstrap gcc-arm-none-eabi
 
 Same as with u-boot, export the cross-compiler path
 ```bash
-export CROSS_COMPILE=/usr/bin/arm-none-eabi-
+export CROSS_COMPILE=/usr/bin/arm-linux-gnueabihf-
 ```
 
 And run the script
