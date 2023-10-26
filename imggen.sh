@@ -10,7 +10,8 @@ Flags:
     -k file - the path to the kernel (DEFAULT = 'config_files/zImage')
     -d file - the path to the dtb file for the SOC (DEFAULT = 'config_files/socfpga_cyclone5_de0_nano_soc.dtb')
     -b file - the path to bootloader (DEFAULT = 'u-boot/u-boot-with-spl.sfp')
-    -r file - the path to the rootfs tarball (DEFAULT = 'rootfs.tar.bz2')"
+    -r file - the path to the rootfs tarball (DEFAULT = 'rootfs.tar.bz2')
+    -s file - the path to u-boot script (DEFAULT = 'u-boot/u-boot.scr')"
 }
 
 # A POSIX variable
@@ -22,8 +23,9 @@ kernel_file="config_files/zImage"
 dtb_file="config_files/socfpga_cyclone5_de0_nano_soc.dtb"
 boot_file="u-boot/u-boot-with-spl.sfp"
 rootfs_file="rootfs.tar.bz2"
+uboot_scr="u-boot/u-boot.scr"
 
-while getopts ":h?:v:o:k:d:b:" opt; do
+while getopts ":h?:v:o:k:d:b:s:" opt; do
   case "$opt" in
     h|\?)
       show_help
@@ -39,6 +41,8 @@ while getopts ":h?:v:o:k:d:b:" opt; do
       ;;
     r)  rootfs_file=$OPTARG
       ;;
+    s)  uboot_scr=$OPTARG
+      ;;
   esac
 done
 
@@ -52,6 +56,7 @@ make_image() {
     KERNEL_FILE=$3
     DTB_FILE=$4
     ROOTFS_FILE=$(realpath $5)
+    UBOOT_SCR=$6
 
     # Create the image file
     fallocate -l 1G $FNAME
@@ -78,6 +83,8 @@ make_image() {
 
     cp $KERNEL_FILE fat/zImage
     cp $DTB_FILE fat/socfpga_cyclone5_de0_nano_soc.dtb
+    cp $UBOOT_SCR fat/u-boot.scr
+
 
     mkdir -p fat/extlinux
     cp ./config_files/extlinux.conf fat/extlinux
@@ -100,4 +107,4 @@ make_image() {
     losetup -d $DEVICE
 }
 
-make_image $output_file $boot_file $kernel_file $dtb_file $rootfs_file
+make_image $output_file $boot_file $kernel_file $dtb_file $rootfs_file $uboot_scr
