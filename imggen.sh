@@ -29,7 +29,7 @@ while getopts ":h?:v:o:k:d:b:s:" opt; do
   case "$opt" in
     h|\?)
       show_help
-      # exit 0
+      exit 0
       ;;
     o)  output_file=$OPTARG
       ;;
