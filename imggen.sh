@@ -79,13 +79,8 @@ make_image() {
     cp $KERNEL_FILE fat/zImage
     cp $DTB_FILE fat/socfpga_cyclone5_de0_nano_soc.dtb
 
-    echo "LABEL Linux Default" > extlinux.conf
-    echo "    KERNEL ../zImage" >> extlinux.conf
-    echo "    FDT ../socfpga_cyclone5_de0_nano_soc.dtb" >> extlinux.conf
-    echo "    APPEND root=/dev/mmcblk0p2 rw rootwait earlyprintk console=ttyS0,115200n8" >> extlinux.conf
-
     mkdir -p fat/extlinux
-    cp extlinux.conf fat/extlinux
+    cp ./config_files/extlinux.conf fat/extlinux
 
     umount fat
     rmdir fat

@@ -4,7 +4,7 @@ git clone https://github.com/altera-opensource/linux-socfpga.git
 
 cd linux-socfpga
 
-git checkout socfpga-5.12
+git checkout socfpga-6.1.38-lts
 
 make ARCH=arm socfpga_defconfig
 
