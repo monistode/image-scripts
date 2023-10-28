@@ -15,4 +15,4 @@ make ARCH=arm socfpga_de10_nano_defconfig
 
 make ARCH=arm -j 24
 
-mkimage -C none -A arm -T script -d ../config_files/bootscript.txt u-boot.scr
+./tools/mkimage -C none -A arm -T script -d ../config_files/bootscript.txt u-boot.scr

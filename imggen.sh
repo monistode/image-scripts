@@ -92,8 +92,6 @@ make_image() {
     umount fat
     rmdir fat
 
-    rm extlinux.conf
-
     # Setup the root partition
     mkdir -p ext4
     mount "${DEVICE}p2" ext4

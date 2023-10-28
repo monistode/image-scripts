@@ -28,6 +28,7 @@ apt install wireless-tools -y
 apt install wpasupplicant -y
 apt install haveged -y
 apt install net-tools build-essential device-tree-compiler -y
+sudo apt install busybox -y
 
 systemctl reenable wpa_supplicant.service
 
