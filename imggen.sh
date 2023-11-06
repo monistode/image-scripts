@@ -23,7 +23,6 @@ kernel_file="config_files/zImage"
 dtb_file="config_files/socfpga_cyclone5_de0_nano_soc.dtb"
 boot_file="config_files/u-boot-with-spl.sfp"
 rootfs_file="rootfs.tar.bz2"
-uboot_scr="config_files/u-boot.scr"
 
 while getopts ":h?:v:o:k:d:b:s:" opt; do
   case "$opt" in
@@ -56,7 +55,6 @@ make_image() {
     KERNEL_FILE=$3
     DTB_FILE=$4
     ROOTFS_FILE=$(realpath $5)
-    UBOOT_SCR=$6
 
     # Create the image file
     fallocate -l 1G $FNAME
@@ -82,7 +80,7 @@ make_image() {
 
     cp $KERNEL_FILE fat/zImage
     cp $DTB_FILE fat/socfpga_cyclone5_de0_nano_soc.dtb
-    cp $UBOOT_SCR fat/u-boot.scr
+    cp ./config_files/u-boot.scr fat/u-boot.scr
 
 
     mkdir -p fat/extlinux
