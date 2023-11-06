@@ -3,6 +3,6 @@ label-id: 0xeadd2114
 device: /dev/loop0
 unit: sectors
 
-/dev/loop0p1 : start=     1540096, size=      557056, type=b
-/dev/loop0p2 : start=        4096, size=     1536000, type=83
-/dev/loop0p3 : start=        2048, size=        2048, type=a2
+/dev/loop0p1 : start=        4096, size=      557056,   type=b
+/dev/loop0p2 : start=        561152, size=    20971520, type=83
+/dev/loop0p3 : start=        2048, size=      2048,     type=a2

@@ -57,7 +57,7 @@ make_image() {
     ROOTFS_FILE=$(realpath $5)
 
     # Create the image file
-    fallocate -l 1G $FNAME
+    fallocate -l 12G $FNAME
 
     # Create a loopback device to partition
     DEVICE=$(losetup --show -f $FNAME)
