@@ -9,9 +9,9 @@ Flags:
     -o file - the path to the output file (DEFAULT = 'sdcard.img')
     -k file - the path to the kernel (DEFAULT = 'config_files/zImage')
     -d file - the path to the dtb file for the SOC (DEFAULT = 'config_files/socfpga_cyclone5_de0_nano_soc.dtb')
-    -b file - the path to bootloader (DEFAULT = 'u-boot/u-boot-with-spl.sfp')
+    -b file - the path to bootloader (DEFAULT = 'config_files/u-boot-with-spl.sfp')
     -r file - the path to the rootfs tarball (DEFAULT = 'rootfs.tar.bz2')
-    -s file - the path to u-boot script (DEFAULT = 'u-boot/u-boot.scr')"
+    -s file - the path to u-boot script (DEFAULT = 'config_files/u-boot.scr')"
 }
 
 # A POSIX variable
@@ -21,9 +21,9 @@ OPTIND=1         # Reset in case getopts has been used previously in the shell.
 output_file="sdcard.img"
 kernel_file="config_files/zImage"
 dtb_file="config_files/socfpga_cyclone5_de0_nano_soc.dtb"
-boot_file="u-boot/u-boot-with-spl.sfp"
+boot_file="config_files/u-boot-with-spl.sfp"
 rootfs_file="rootfs.tar.bz2"
-uboot_scr="u-boot/u-boot.scr"
+uboot_scr="config_files/u-boot.scr"
 
 while getopts ":h?:v:o:k:d:b:s:" opt; do
   case "$opt" in
@@ -66,7 +66,6 @@ make_image() {
 
     # Partition the image
     sfdisk $DEVICE < ./config_files/sdcard.sfdisk
-    rm sdcard.conf
 
     # Make sure the partitions are visible
     partprobe $DEVICE
