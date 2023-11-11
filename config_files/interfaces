@@ -2,7 +2,7 @@
 # Include files from /etc/network/interfaces.d:
 source /etc/network/interfaces.d/*
 
-auto lo eth0
+allow-hotplug lo eth0
 iface lo inet loopback
 
 allow-hotplug eth0
