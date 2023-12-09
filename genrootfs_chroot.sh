@@ -33,4 +33,8 @@ systemctl reenable wpa_supplicant.service
 
 rm /usr/bin/qemu-arm-static /genrootfs_chroot.sh
 
+mkdir -p /lib/firmware
+mv /*dtbo /lib/firmware
+mv /*rbf /lib/firmware
+
 exit

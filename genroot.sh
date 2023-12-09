@@ -14,6 +14,9 @@ cp ./config_files/shadow rootfs
 
 cp ./config_files/interfaces ./config_files/sources.list ./config_files/sshd_config rootfs
 
+cp ./config_files/*dtbo rootfs
+cp ./config_files/*rbf rootfs
+
 chroot rootfs /usr/bin/qemu-arm-static /bin/bash -c "sh genrootfs_chroot.sh"
 
 cd rootfs
