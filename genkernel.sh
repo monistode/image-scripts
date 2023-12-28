@@ -1,6 +1,6 @@
 #!/bin/sh
 
-git clone https://github.com/altera-opensource/linux-socfpga.git
+git clone https://github.com/altera-opensource/linux-socfpga.git --depth 1
 
 cd linux-socfpga
 
